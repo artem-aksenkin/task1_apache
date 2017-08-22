@@ -1,0 +1,132 @@
+-----> Starting Kitchen (v1.17.0)
+-----> Cleaning up any prior instances of <default-sbeliakou-centos-73-x86-64-minimal>
+-----> Destroying <default-sbeliakou-centos-73-x86-64-minimal>...
+       Finished destroying <default-sbeliakou-centos-73-x86-64-minimal> (0m0.00s).
+-----> Testing <default-sbeliakou-centos-73-x86-64-minimal>
+-----> Creating <default-sbeliakou-centos-73-x86-64-minimal>...
+       Bringing machine 'default' up with 'virtualbox' provider...
+       ==> default: Importing base box 'sbeliakou/centos-7.3-x86_64-minimal'...
+       [KProgress: 10%[KProgress: 30%[KProgress: 50%[KProgress: 70%[KProgress: 80%[KProgress: 90%[K==> default: Matching MAC address for NAT networking...
+       ==> default: Checking if box 'sbeliakou/centos-7.3-x86_64-minimal' is up to date...
+       ==> default: Setting the name of the VM: kitchen-task1_apache-default-sbeliakou-centos-73-x86-64-minimal_default_1503411180549_15066
+       ==> default: Fixed port collision for 22 => 2222. Now on port 2201.
+       ==> default: Clearing any previously set network interfaces...
+       ==> default: Preparing network interfaces based on configuration...
+           default: Adapter 1: nat
+           default: Adapter 2: hostonly
+       ==> default: Forwarding ports...
+           default: 80 (guest) => 8080 (host) (adapter 1)
+           default: 22 (guest) => 2201 (host) (adapter 1)
+       ==> default: Booting VM...
+       ==> default: Waiting for machine to boot. This may take a few minutes...
+           default: SSH address: 127.0.0.1:2201
+           default: SSH username: vagrant
+           default: SSH auth method: private key
+           default: Warning: Connection reset. Retrying...
+           default: Warning: Remote connection disconnect. Retrying...
+           default: Warning: Connection reset. Retrying...
+           default: Warning: Remote connection disconnect. Retrying...
+           default: Warning: Connection reset. Retrying...
+           default: Warning: Remote connection disconnect. Retrying...
+           default: 
+           default: Vagrant insecure key detected. Vagrant will automatically replace
+           default: this with a newly generated keypair for better security.
+           default: 
+           default: Inserting generated public key within guest...
+           default: Removing insecure key from the guest if it's present...
+           default: Key inserted! Disconnecting and reconnecting using new SSH key...
+       ==> default: Machine booted and ready!
+       ==> default: Checking for guest additions in VM...
+       ==> default: Setting hostname...
+       ==> default: Configuring and enabling network interfaces...
+           default: SSH address: 127.0.0.1:2201
+           default: SSH username: vagrant
+           default: SSH auth method: private key
+       ==> default: Mounting shared folders...
+           default: /tmp/chef-pkgs => /home/student/workspace/chef/intro/cookbooks/task1_apache/chef-pkgs
+       ==> default: Machine not provisioned because `--no-provision` is specified.
+       [SSH] Established
+       Vagrant instance <default-sbeliakou-centos-73-x86-64-minimal> created.
+       Finished creating <default-sbeliakou-centos-73-x86-64-minimal> (1m12.66s).
+-----> Converging <default-sbeliakou-centos-73-x86-64-minimal>...
+       Preparing files for transfer
+       Preparing dna.json
+       Resolving cookbook dependencies with Berkshelf 6.3.0...
+       Removing non-cookbook files before transfer
+       Preparing validation.pem
+       Preparing client.rb
+-----> Installing Chef Omnibus (13.3.42)
+       Downloading file:///tmp/chef-pkgs/install.sh to file /tmp/install.sh
+       Trying wget...
+       Trying curl...
+       Download complete.
+       warning: /tmp/chef-pkgs/chef-13.3.42-1.el7.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+       Preparing...                                                            (100%)#                                 (100%)##                                (100%)###                               (100%)####                              (100%)#####                             (100%)######                            (100%)#######                           (100%)########                          (100%)#########                         (100%)##########                        (100%)###########                       (100%)############                      (100%)#############                     (100%)##############                    (100%)###############                   (100%)################                  (100%)#################                 (100%)##################                (100%)###################               (100%)####################              (100%)#####################             (100%)######################            (100%)#######################           (100%)########################          (100%)#########################         (100%)##########################        (100%)###########################       (100%)############################      (100%)#############################     (100%)##############################    (100%)###############################   (100%)################################  (100%)################################# (100%)################################# [100%]
+       Updating / installing...
+          1:chef-13.3.42-1.el7                                                 (  1%)#                                 (  4%)##                                (  7%)###                               ( 10%)####                              ( 13%)#####                             ( 16%)######                            ( 19%)#######                           ( 22%)########                          ( 25%)#########                         ( 28%)##########                        ( 31%)###########                       ( 34%)############                      ( 37%)#############                     ( 40%)##############                    ( 43%)###############                   ( 46%)################                  ( 49%)#################                 ( 52%)##################                ( 54%)###################               ( 57%)####################              ( 60%)#####################             ( 63%)######################            ( 66%)#######################           ( 69%)########################          ( 72%)#########################         ( 75%)##########################        ( 78%)###########################       ( 81%)############################      ( 84%)#############################     ( 87%)##############################    ( 90%)###############################   ( 93%)################################  ( 96%)################################# ( 99%)################################# [100%]
+       Thank you for installing Chef!
+       Transferring files to <default-sbeliakou-centos-73-x86-64-minimal>
+       Starting Chef Client, version 13.3.42
+       Creating a new client identity for default-sbeliakou-centos-73-x86-64-minimal using the validator key.
+       resolving cookbooks for run list: ["task1_apache::default"]
+       Synchronizing Cookbooks:
+         - task1_apache (0.1.0)
+       Installing Cookbook Gems:
+       Compiling Cookbooks...
+       Converging 4 resources
+       Recipe: task1_apache::default
+         * yum_package[httpd] action install
+           - install version 2.4.6-45.el7.centos.4 of package httpd
+         * yum_package[net-tools] action install
+           - install version 2.0-0.17.20131004git.el7 of package net-tools
+         * service[httpd] action enable
+           - enable service service[httpd]
+         * service[httpd] action start
+           - start service service[httpd]
+         * template[/var/www/html/index.html] action create
+           - create new file /var/www/html/index.html
+           - update content in file /var/www/html/index.html from none to 2914aa
+           --- /var/www/html/index.html	2017-08-22 15:16:14.015338223 +0100
+           +++ /var/www/html/.chef-index20170822-12034-55nfh.html	2017-08-22 15:16:14.015338223 +0100
+           @@ -1 +1,6 @@
+           +<html>
+           +  <body>
+           +    <h1>hello world</h1>
+           +  </body>
+           +</html>
+       
+       Running handlers:
+       Running handlers complete
+       Chef Client finished, 5/5 resources updated in 02 minutes 02 seconds
+       Finished converging <default-sbeliakou-centos-73-x86-64-minimal> (2m30.80s).
+-----> Setting up <default-sbeliakou-centos-73-x86-64-minimal>...
+       Finished setting up <default-sbeliakou-centos-73-x86-64-minimal> (0m0.00s).
+-----> Verifying <default-sbeliakou-centos-73-x86-64-minimal>...
+       Loaded tests from test/smoke/default 
+
+Profile: tests from test/smoke/default
+Version: (not specified)
+Target:  ssh://vagrant@127.0.0.1:2201
+
+
+  User root
+[38;5;247m     ↺  [0m
+  Port 80
+[38;5;41m     ✔  should be listening[0m
+  Port 443
+[38;5;41m     ✔  should not be listening[0m
+  System Package
+[38;5;41m     ✔  httpd should be installed[0m
+  Service httpd
+[38;5;41m     ✔  should be enabled[0m
+[38;5;41m     ✔  should be running[0m
+
+Test Summary: [38;5;41m5 successful[0m, [38;5;9m0 failures[0m, [38;5;247m1 skipped[0m
+       Finished verifying <default-sbeliakou-centos-73-x86-64-minimal> (0m2.23s).
+-----> Destroying <default-sbeliakou-centos-73-x86-64-minimal>...
+       ==> default: Forcing shutdown of VM...
+       ==> default: Destroying VM and associated drives...
+       Vagrant instance <default-sbeliakou-centos-73-x86-64-minimal> destroyed.
+       Finished destroying <default-sbeliakou-centos-73-x86-64-minimal> (0m4.27s).
+       Finished testing <default-sbeliakou-centos-73-x86-64-minimal> (3m49.96s).
+-----> Kitchen is finished. (3m51.57s)
